@@ -5,87 +5,63 @@ import { dataPaket } from '../data/data'
 import { HiCheck, HiShoppingCart } from 'react-icons/hi'
 
 const PriceList = () => {
-  // index state
-  const [index, setIndex] = useState(false)
-  // destructure pricing
   const { title, subtitle, cards } = dataPaket
   return (
-    <section id='harga' className='section'>
-      <div className='container mx-auto'>
-        <h1 className='flex items-center justify-center mb-2 text-xl font-bold uppercase text-accent'>
-          Harga Paket
-        </h1>
-        {/* title */}
-        <h2
-          className='mb-2 text-center title lg:mb-7 '
-          data-aos='fade-up'
-          data-aos-delay='200'
-        >
-          {title}
-        </h2>
-        <p className='mb-10 text-center lead'>{subtitle}</p>
-        {/* cards */}
-        <div className='gap-x-4 flex flex-col Sdesktop:flex-row lg:gap-x-5 gap-y-[30px] lg:gap-y-0 justify-center items-center'>
-          {cards.map((card, cardIndex) => {
-            // data card
-            const { title, price, btnText, borderColor, description } = card
-            // card
-            return (
-              <div
-                data-aos='fade-up'
-                data-aos-delay=''
-                data-aos-offset='300'
-                key={cardIndex}
-              >
+    <section className='section' id='harga'>
+      <div className='w-full'>
+        <div className='containers'>
+          <div className='text-center'>
+            <h1 className='text-xl font-bold mb-2 text-accent'>HARGA PAKET</h1>
+            <h2 className='mb-2 text-center title  Sdesktop:mb-7'>{title}</h2>
+            <h3 className='mb-10 text-center lead'>{subtitle}</h3>
+          </div>
+          <div className='grid mobile:grid-cols-1 tablet:grid-cols-1 Sdesktop:grid-cols-3 justify-items-center'>
+            {cards.map((result, cardIndex) => {
+              const {
+                title,
+                price,
+                btnText,
+                borderColor,
+                description,
+                popular,
+                id,
+              } = result
+              return (
                 <div
-                  className='mx-auto rounded-md cursor-pointer max-w-[350px] pricing-table '
-                  style={{ backgroundColor: borderColor }}
+                  key={id}
+                  className='bg-accent/20 p-[.5rem] rounded-xl w-[250px]'
                 >
-                  {/* card title */}
-                  <div className='text-lg font-semibold text-center text-white'>
-                    {title}
+                  <div>{popular}</div>
+                  <div className='text-center'>
+                    <h1 className='font-semibold text-lg text-accent'>
+                      {title}
+                    </h1>
+                    <h2 className='font-bold text-3xl'>{price}</h2>
                   </div>
-                  {/* card price */}
-                  <div className='mb-5 text-5xl font-semibold text-center text-white '>
-                    {price}
-                  </div>
-                  {/* card services */}
-                  <div className='flex flex-col mb-6 gap-y-2'>
+                  <div className=''>
                     {description.map((desc, index) => {
-                      // data desc
-                      const { titleDesc, titleDesc2 } = desc
+                      const { titleDesc2, titleDesc } = desc
                       return (
-                        <div
-                          className='flex items-center space-x-2 '
-                          key={index}
-                        >
-                          <div className='mr-2'>
-                            <HiCheck className='text-2xl text-green-600 ' />
-                          </div>
-                          <div>
-                            <h1 className='font-bold text-white'>
-                              {titleDesc}
-                            </h1>
-                            <h1 className='text-white/70'>{titleDesc2}</h1>
+                        <div className=''>
+                          <div className=''>
+                            <div className='flex items-center'>
+                              <div className='mr-2'>
+                                <HiCheck className='text-accent font-semibold' />
+                              </div>
+                              <h1 className=' font-medium'>{titleDesc}</h1>
+                            </div>
+                            <p className='text-black/70 font-normal'>
+                              {titleDesc2}
+                            </p>
                           </div>
                         </div>
                       )
                     })}
                   </div>
-                  {/* btn */}
-                  <div className=''>
-                    <button
-                      onClick={() => setIndex(cardIndex)}
-                      className=' text-white btn2 btn-lg space-x-[14px] bg-accent hover:bg-accent/70  transition-all'
-                    >
-                      <span>{btnText}</span>
-                      <HiShoppingCart />
-                    </button>
-                  </div>
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>
