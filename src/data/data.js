@@ -205,7 +205,7 @@ export const dataPaket = {
     {
       id: 2,
       title: 'Premium',
-      popular: 'Popular',
+      popular: 'Best Price',
       price: '400K',
       description: [
         { titleDesc: 'Semua Fitur Basic' },

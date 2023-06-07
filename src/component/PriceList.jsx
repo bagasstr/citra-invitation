@@ -29,9 +29,11 @@ const PriceList = () => {
               return (
                 <div
                   key={id}
-                  className='bg-accent/20 p-[.5rem] rounded-xl w-[250px]'
+                  className='bg-accent/20 p-[.5rem] rounded-xl w-[250px] relative'
                 >
-                  <div>{popular}</div>
+                  <div className='absolute bg-accent px-2 rounded-full text-white font-semibold top-[-10px] left-[-5px]'>
+                    {popular}
+                  </div>
                   <div className='text-center'>
                     <h1 className='font-semibold text-lg text-accent'>
                       {title}
